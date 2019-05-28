@@ -39,6 +39,10 @@ ReactDOM.render(<Spin />, mountNode);
 
 [Import components on demand](./docs/use-babel-plugin-import.md)
 
+## Docs
+
++ [CHANGELOG](./CHANGELOG.md)
+
 ## Components
 
 + [Spin](./src/Spin)

@@ -39,6 +39,10 @@ ReactDOM.render(<Spin />, mountNode);
 
 [按需加载](./docs/use-babel-plugin-import.md)
 
+## Docs
+
++ [CHANGELOG](./CHANGELOG.md)
+
 ## Components
 
 + [Spin](./src/Spin)
