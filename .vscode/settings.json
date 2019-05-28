@@ -1,0 +1,15 @@
+{
+  "editor.tabSize": 2,
+  "eslint.validate": [
+    {
+      "language": "typescript",
+      "autoFix": true
+    },
+    {
+      "language": "typescriptreact",
+      "autoFix": true
+    }
+  ],
+  "eslint.autoFixOnSave": true,
+  "eslint.packageManager": "yarn"
+}

@@ -1,0 +1,81 @@
+{
+  "name": "@vdfor/react-component",
+  "version": "0.1.1",
+  "author": "vdfor",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vdfor/react-component.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vdfor/react-component/issues"
+  },
+  "homepage": "https://github.com/vdfor/react-component#readme",
+  "private": false,
+  "files": [
+    "dist/"
+  ],
+  "types": "dist/es/index.d.ts",
+  "module": "dist/es/index",
+  "scripts": {
+    "start": "node scripts/beforeStart.js && yarn run typing && cross-env NODE_ENV=development rollup -c --watch",
+    "build": "yarn run test && cross-env NODE_ENV=production rollup -c && yarn run typing && node scripts/afterBuild.js",
+    "typing": "tsc --allowJs false --declaration --declarationDir dist/types --isolatedModules false --noEmit false --emitDeclarationOnly",
+    "postversion:major": "yarn run build && cross-env POST_VERSION=major node scripts/postversion.js",
+    "postversion:minor": "yarn run build && cross-env POST_VERSION=minor node scripts/postversion.js",
+    "postversion:patch": "yarn run build && cross-env POST_VERSION=patch node scripts/postversion.js",
+    "test": "jest --color"
+  },
+  "peerDependencies": {
+    "@babel/runtime": ">= 7",
+    "react": ">= 16.8.0",
+    "styled-components": ">= 4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-external-helpers": "^7.2.0",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/plugin-transform-runtime": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.3.3",
+    "@babel/runtime": "^7.4.5",
+    "@types/enzyme": "^3.9.3",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
+    "@types/jest": "^24.0.13",
+    "@types/jsdom": "^12.2.3",
+    "@types/node": "^12.0.2",
+    "@types/react": "^16.8.18",
+    "@types/react-dom": "^16.8.4",
+    "@types/react-test-renderer": "^16.8.1",
+    "@types/styled-components": "^4.1.15",
+    "@typescript-eslint/eslint-plugin": "^1.9.0",
+    "@typescript-eslint/parser": "^1.9.0",
+    "cross-env": "^5.2.0",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.13.1",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.13.0",
+    "eslint-plugin-react-hooks": "^1.6.0",
+    "fs-extra": "^8.0.1",
+    "jest": "^24.8.0",
+    "jest-styled-components": "^6.3.1",
+    "jsdom": "^15.1.1",
+    "jsdom-global": "^3.0.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-test-renderer": "^16.8.6",
+    "rollup": "^1.12.3",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-clear": "^2.0.7",
+    "rollup-plugin-eslint": "^6.0.0",
+    "rollup-plugin-node-resolve": "^5.0.0",
+    "styled-components": "^4.2.0",
+    "typescript": "^3.4.5"
+  }
+}
