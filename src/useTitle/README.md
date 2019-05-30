@@ -21,8 +21,8 @@ title: useTitle
 import { useDelay } from '@vdfor/react-component';
 
 const App = () => {
-  const isShow = useTitle();
-  return isShow ? <div>SHOW</div> : null;
+  useTitle('Home');
+  return <h1>Home Page</h1>;
 }
 
 ReactDOM.render(<App >, mountNode);
