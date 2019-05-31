@@ -6,7 +6,7 @@ module.exports = {
     node: true,
     jest: true
   },
-  extends: ['eslint:recommended', 'airbnb','plugin:@typescript-eslint/recommended'],
+  extends: ['eslint:recommended', 'airbnb', 'plugin:@typescript-eslint/recommended'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
@@ -16,7 +16,7 @@ module.exports = {
     extraFileExtensions: ['tsx', 'ts'],
     project: './tsconfig.json',
   },
-  plugins: ['@typescript-eslint', 'react-hooks' ],
+  plugins: ['@typescript-eslint', 'react-hooks'],
   root: true,
   rules: {
     '@typescript-eslint/indent': ['error', 2],
@@ -34,6 +34,18 @@ module.exports = {
     'max-len': ['error', 200],
     'no-console': ['off'],
     'no-constant-condition': ['off'],
+    "no-restricted-imports": [
+      "error",
+      {
+        "paths": [{
+          "name": "styled-components",
+          "message": "Please import from styled-components/macro."
+        }],
+        "patterns": [
+          "!styled-components/macro"
+        ]
+      }
+    ],
     "react-hooks/rules-of-hooks": ["error"],
     "react-hooks/exhaustive-deps": ["warn"],
     'react/jsx-filename-extension': ['error', { extensions: ['ts', 'tsx'] }]

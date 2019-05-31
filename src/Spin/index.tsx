@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styled, { keyframes, ThemeProvider } from 'styled-components';
+import styled, { keyframes, ThemeProvider } from 'styled-components/macro';
 
 interface ISpinProps {
   style?: React.CSSProperties;

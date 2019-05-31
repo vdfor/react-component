@@ -3,6 +3,15 @@
 遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范。
 
 ---
+
+## v0.2.1
+
+`2019-05-31`
+
++ **Improved**  use `babel-plugin-macros` with `styled-components`
++ **Fix** 修复 `eslint` 报错 Unable to resolve path to module '@vdfor/react-component' [#2](https://github.com/vdfor/react-component/issues/2)
++ **Docs** 更正了 `useTitile` 文档示例
+ 
 ## v0.2.0
 
 `2019-05-29`

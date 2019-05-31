@@ -18,7 +18,8 @@ title: 使用 babel-plugin-import
 ```json
 {
   "libraryName": "@vdfor/react-component",
-  "libraryDirectory": "dist/es"
+  "libraryDirectory": "dist/es",
+  "camel2DashComponentName": false
 }
 ```
 

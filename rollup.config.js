@@ -1,6 +1,5 @@
 import fs from 'fs';
 import path from 'path';
-import clear from 'rollup-plugin-clear';
 import resolve from 'rollup-plugin-node-resolve';
 import babel from 'rollup-plugin-babel';
 import { eslint } from 'rollup-plugin-eslint';
@@ -18,6 +17,12 @@ const moduleMap = moduleNames.reduce((prev, name) => {
 }, {});
 const nodeEnv = process.env.NODE_ENV || 'development';
 
+const commonOutputOpts = {
+  entryFileNames: '[name]/index.js',
+  sourcemap: nodeEnv === 'development',
+  exports: 'named'
+};
+
 export default {
   input: {
     index: resolveApp('src/index.ts'),
@@ -26,17 +31,17 @@ export default {
   output: [
     {
       dir: resolveApp('dist/es'),
-      format: 'es',
-      entryFileNames: '[name]/index.js',
-      sourcemap: nodeEnv === 'development',
-      exports: 'named'
+      format: 'esm',
+      ...commonOutputOpts
+    },
+    {
+      dir: resolveApp('dist/lib'),
+      format: 'commonjs',
+      ...commonOutputOpts
     }
   ],
   external: id => externals.some(e => id.indexOf(e) === 0),
   plugins: [
-    nodeEnv === 'production' && clear({
-      targets: [resolveApp('dist')]
-    }),
     eslint({
       fix: true
     }),
