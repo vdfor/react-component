@@ -3,13 +3,12 @@ import path from 'path';
 import resolve from 'rollup-plugin-node-resolve';
 import babel from 'rollup-plugin-babel';
 import { eslint } from 'rollup-plugin-eslint';
-import pkg from './package.json';
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 
 const appDirectory = path.join(fs.realpathSync(process.cwd()), './');
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 
 const extensions = ['.js', '.jsx', '.ts', '.tsx'];
-const externals = Object.keys(pkg.peerDependencies);
 const moduleNames = fs.readdirSync(resolveApp('src')).filter(i => !/(index.ts|.d.ts|setupTests.ts)$/.test(i));
 const moduleMap = moduleNames.reduce((prev, name) => {
   prev[name] = resolveApp(`src/${name}/index.tsx`);
@@ -40,8 +39,11 @@ export default {
       ...commonOutputOpts
     }
   ],
-  external: id => externals.some(e => id.indexOf(e) === 0),
+  // external: id => externals.some(e => id.indexOf(e) === 0),
   plugins: [
+    peerDepsExternal({
+      includeDependencies: true
+    }),
     eslint({
       fix: true
     }),

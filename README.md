@@ -23,10 +23,10 @@
 
 ```bash
 # use yarn
-yarn add @vdfor/react-component
+yarn add @vdfor/react-component styled-components
 
 # use npm
-npm i @vdfor/react-component -S
+npm i @vdfor/react-component styled-components -S
 ```
 
 ## 使用
