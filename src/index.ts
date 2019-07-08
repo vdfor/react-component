@@ -16,4 +16,4 @@ export { default as Spin } from './Spin';
 export { default as Loadable } from './Loadable';
 export { default as useTitle } from './useTitle';
 export { default as useDalay } from './useDelay';
-export * from './TabBar';
+export { default as TabBar } from './TabBar';

@@ -31,7 +31,7 @@ const Wrapper = styled.div`
   color: ${({ theme: { unselectedTintColor } }) => unselectedTintColor};
 `;
 
-export default ({
+const Bar = ({
   className, style = {}, theme = {}, children
 }: ITarBarProps) => {
   const themeProps = { ...initTheme, ...theme };
@@ -56,3 +56,12 @@ export default ({
     </ThemeProvider>
   );
 };
+
+export default class TarBar extends React.PureComponent<ITarBarProps> {
+  public static Item = Tab;
+
+  public render() {
+    const { props } = this;
+    return <Bar {...props} />;
+  }
+}

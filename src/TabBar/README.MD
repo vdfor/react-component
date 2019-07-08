@@ -26,7 +26,7 @@ title: TabBar
 | tintColor | 选中的字体颜色 | string | #1890ff |
 | unselectedTintColor | 未选中的字体颜色 | string | #888888 |
 
-### TarBarItem
+### TarBar.Item
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -39,7 +39,7 @@ title: TabBar
 ## Example
 
 ```tsx
-import { TabBar, TabBarItem } from '@vdfor/react-component';
+import { TabBar } from '@vdfor/react-component';
 
 const data = [
   {
@@ -63,5 +63,5 @@ const data = [
   }
 ];
 
-ReactDOM.render(<TabBar>{data.map(i => (<TabBarItem {...i} />))}</TabBar>, mountNode);
+ReactDOM.render(<TabBar>{data.map(i => (<TabBar.Item {...i} />))}</TabBar>, mountNode);
 ```
