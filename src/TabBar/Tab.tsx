@@ -7,8 +7,8 @@ export interface ITabProps {
   icon: string;
   selectedIcon: string;
   title: string;
-  tintColor: string;
-  unselectedTintColor: string;
+  tintColor?: string;
+  unselectedTintColor?: string;
   onPress?: () => void;
 }
 
