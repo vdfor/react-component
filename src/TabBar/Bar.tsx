@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { ThemeProvider } from 'styled-components/macro';
 import Tab, { ITabProps } from './Tab';
-import { pxToRem, generateKy } from '../util';
+import { pxToRem, generateKy, defaultConfig } from '../util';
 
 interface ITarBarProps extends React.PropsWithChildren<any> {
   style?: React.CSSProperties;
@@ -17,7 +17,7 @@ interface ITarBarProps extends React.PropsWithChildren<any> {
 const initTheme = {
   height: pxToRem(50),
   barTintColor: '#ffffff',
-  tintColor: '#1890ff',
+  tintColor: defaultConfig.primaryColor,
   unselectedTintColor: '#888888'
 };
 

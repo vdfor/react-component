@@ -1,5 +1,6 @@
 import * as React from 'react';
 import styled, { keyframes, ThemeProvider } from 'styled-components/macro';
+import { defaultConfig } from '../util';
 
 interface ISpinProps {
   style?: React.CSSProperties;
@@ -61,7 +62,7 @@ const LineFour = styled(Line)`
 `;
 
 const initTheme = {
-  color: '#f03d3e'
+  color: defaultConfig.primaryColor
 };
 
 export default ({ style = {}, theme = {} }: ISpinProps) => (

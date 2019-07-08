@@ -10,6 +10,7 @@
 
 + **Add** `TabBar`新增api - className
 + **Add** `TabBarItem`新增api - onPress
++ **Improve**  `Spin`默认颜色更改为`#1890ff`
 
 ## v0.3.1
 
@@ -22,7 +23,7 @@
 
 `2019-05-31`
 
-+ **Improved**  use `babel-plugin-macros` with `styled-components`
++ **Improve**  use `babel-plugin-macros` with `styled-components`
 + **Fix** 修复 `eslint` 报错 Unable to resolve path to module '@vdfor/react-component' [#2](https://github.com/vdfor/react-component/issues/2)
 + **Docs** 更正了 `useTitile` 文档示例
  
@@ -32,8 +33,8 @@
 
 + **Add** hooks - `useDelay` `useTitle`
 + **Add** Components - `Spin` `Loadable` 
-+ **Improved** `eslint` 规则新增 hooks 检测
-+ **Improved** 改进了未使用按需加载时浏览器控制台的提示语
++ **Improve** `eslint` 规则新增 hooks 检测
++ **Improve** 改进了未使用按需加载时浏览器控制台的提示语
 + **Fix** 修复了非生产环境下使用全部引入时浏览器控制台未提示警告
 + **Docs** 新增组件文档
 + **Docs** 增加 use-babel-plugin-import.md 文档

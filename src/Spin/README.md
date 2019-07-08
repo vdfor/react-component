@@ -18,7 +18,7 @@ title: Spin
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| color | 主颜色 | string | #f03d3e |
+| color | 主颜色 | string | #1890ff |
 
 ## Example
 
