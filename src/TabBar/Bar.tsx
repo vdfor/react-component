@@ -5,6 +5,7 @@ import { pxToRem, generateKy } from '../util';
 
 interface ITarBarProps extends React.PropsWithChildren<any> {
   style?: React.CSSProperties;
+  className?: string;
   theme?: {
     barTintColor?: string;
     tintColor?: string;
@@ -30,7 +31,9 @@ const Wrapper = styled.div`
   color: ${({ theme: { unselectedTintColor } }) => unselectedTintColor};
 `;
 
-export default ({ style = {}, theme = {}, children }: ITarBarProps) => {
+export default ({
+  className, style = {}, theme = {}, children
+}: ITarBarProps) => {
   const themeProps = { ...initTheme, ...theme };
   const { tintColor, unselectedTintColor } = themeProps;
   const getTabs = () => React.Children.map(children, ({ props: rProps }: any) => ({
@@ -47,7 +50,7 @@ export default ({ style = {}, theme = {}, children }: ITarBarProps) => {
   )) : null;
   return (
     <ThemeProvider theme={themeProps}>
-      <Wrapper style={style}>
+      <Wrapper className={className} style={style}>
         {content}
       </Wrapper>
     </ThemeProvider>

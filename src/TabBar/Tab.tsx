@@ -9,6 +9,7 @@ export interface ITabProps {
   title: string;
   tintColor: string;
   unselectedTintColor: string;
+  onPress?: () => void;
 }
 
 const Wrapper = styled.div`
@@ -32,9 +33,9 @@ const Icon = styled.div`
 `;
 
 export default ({
-  selected = false, icon, selectedIcon, title, tintColor, unselectedTintColor
+  selected = false, icon, selectedIcon, title, tintColor, unselectedTintColor, onPress
 }: ITabProps) => (
-  <Wrapper style={{ color: selected ? tintColor : unselectedTintColor }}>
+  <Wrapper style={{ color: selected ? tintColor : unselectedTintColor }} onClick={onPress}>
     <Icon style={{ backgroundImage: `url(${selected ? selectedIcon : icon})` }} />
     <Title>{title}</Title>
   </Wrapper>

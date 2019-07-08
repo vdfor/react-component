@@ -13,7 +13,8 @@ title: TabBar
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| style | 自定义样式 | object | - |
+| style | tarBar样式 | object | - |
+| className | tarBar类名 | string | - |
 | theme | 主题配置项 | [object](#theme) | - |
 
 #### theme
@@ -33,6 +34,7 @@ title: TabBar
 | icon | 默认展示图标 | string | - |
 | selectedIcon | 选中时默认展示图标 | string | - |
 | title | 标题文字 | string | - |
+| onPress | 点击TarBarItem触发 | Function | - |
 
 ## Example
 

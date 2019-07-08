@@ -4,6 +4,13 @@
 
 ---
 
+## v0.3.2
+
+`2019-07-08`
+
++ **Add** `TabBar`新增api - className
++ **Add** `TabBarItem`新增api - onPress
+
 ## v0.3.1
 
 `2019-07-08`
