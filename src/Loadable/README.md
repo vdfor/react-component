@@ -11,16 +11,13 @@ title: Loadable
 
 搭配 `React.lazy` 使用，使用方法如下：
 
-`Loadable(Component, [params])`
-
-### Component 
-
-懒加载组件，类型为 `LazyExoticComponent`
+`Loadable(params)`
 
 ### params
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
+| component | 动态导入的组件 | () => Promise<{ default: ComponentType }> | - |
 | props | 组件props | object | - |
 | loading | 组件加载完成前loading，防止白屏 | ReactElement | - |
 | delay | loading延迟显示(毫秒)，防止页面闪烁 | number | 200 |
@@ -39,12 +36,10 @@ export default ({ text }) => (<div>{text}</div>);
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Loadable, Spin } from '@vdfor/react-component';
 
-const Home = React.lazy(() => import('./Home'));
-
 const App = () => (
   <Router>
     <div>
-      <Route exact path="/" component={Loadable(Home, { loading: <Spin />, props: { text: 'Home Page' } })} />
+      <Route exact path="/" component={Loadable({ component: () => import('./Home'), loading: <Spin />, props: { text: 'Home Page' } })} />
     </div>
   </Router>
 );

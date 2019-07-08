@@ -1,4 +1,6 @@
-import React, { ReactElement, Suspense, LazyExoticComponent } from 'react';
+import React, {
+  ReactElement, Suspense, lazy, ComponentType
+} from 'react';
 import Spin from '../Spin';
 import useDelay from '../useDelay';
 
@@ -9,6 +11,7 @@ interface ILoadingProps {
 
 interface IParams extends ILoadingProps {
   props?: { [key: string]: any };
+  component: () => Promise<{ default: ComponentType<any> }>;
 }
 
 const Loading = ({ delay, loading }: ILoadingProps) => {
@@ -16,12 +19,16 @@ const Loading = ({ delay, loading }: ILoadingProps) => {
   return (visible && loading) || null;
 };
 
-export default (Component: LazyExoticComponent<any>, {
+export default ({
+  component,
   props: iprops = {},
   loading = <Spin style={{ height: '100vh' }} />,
   delay = 200
-}: IParams = {}) => (props: any) => (
-  <Suspense fallback={<Loading {...{ loading, delay }} />}>
-    <Component {...{ ...props, ...iprops }} />
-  </Suspense>
-);
+}: IParams) => (props: any) => {
+  const LazyComponent = lazy(component);
+  return (
+    <Suspense fallback={null}>
+      <LazyComponent {...{ ...props, ...iprops }} />
+    </Suspense>
+  );
+};
