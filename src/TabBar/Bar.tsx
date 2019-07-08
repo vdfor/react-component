@@ -33,8 +33,8 @@ const Wrapper = styled.div`
 export default ({ style = {}, theme = {}, children }: ITarBarProps) => {
   const themeProps = { ...initTheme, ...theme };
   const { tintColor, unselectedTintColor } = themeProps;
-  const getTabs = () => React.Children.map(children, (c: any) => ({
-    ...(c.props as ITabProps)
+  const getTabs = () => React.Children.map(children, ({ props: rProps }: any) => ({
+    ...(rProps as ITabProps)
   }));
   const tabs = getTabs();
   const content = Array.isArray(tabs) ? tabs.map(cProps => (
