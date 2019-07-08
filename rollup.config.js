@@ -9,9 +9,14 @@ const appDirectory = path.join(fs.realpathSync(process.cwd()), './');
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 
 const extensions = ['.js', '.jsx', '.ts', '.tsx'];
-const moduleNames = fs.readdirSync(resolveApp('src')).filter(i => !/(index.ts|.d.ts|setupTests.ts)$/.test(i));
+const moduleNames = fs.readdirSync(resolveApp('src')).filter(i => !/(index.ts|.d.ts|util.ts|setupTests.ts)$/.test(i));
 const moduleMap = moduleNames.reduce((prev, name) => {
-  prev[name] = resolveApp(`src/${name}/index.tsx`);
+  try {
+    const stat = fs.statSync(resolveApp(`src/${name}/index.ts`));
+    prev[name] = stat && stat.isFile() ? resolveApp(`src/${name}/index.ts`) : resolveApp(`src/${name}/index.tsx`);
+  } catch (error) {
+    prev[name] = resolveApp(`src/${name}/index.tsx`);
+  }
   return prev;
 }, {});
 const nodeEnv = process.env.NODE_ENV || 'development';

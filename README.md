@@ -47,6 +47,7 @@ ReactDOM.render(<Spin />, mountNode);
 
 + [Spin](./src/Spin)
 + [Loadable](./src/Loadable)
++ [TabBar](./src/TabBar)
 
 ## hooks
 

@@ -23,7 +23,7 @@ title: Spin
 ## Example
 
 ```tsx
-import { Spin } from 'Spin';
+import { Spin } from '@vdfor/react-component';
 
 ReactDOM.render(<Spin theme={{color: '#2f54eb'}} >, mountNode);
 ```
