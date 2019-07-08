@@ -27,7 +27,7 @@ export default ({
 }: IParams) => (props: any) => {
   const LazyComponent = lazy(component);
   return (
-    <Suspense fallback={null}>
+    <Suspense fallback={<Loading {...{ loading, delay }} />}>
       <LazyComponent {...{ ...props, ...iprops }} />
     </Suspense>
   );
