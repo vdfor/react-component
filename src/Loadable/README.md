@@ -9,7 +9,7 @@ title: Loadable
 
 ## Api
 
-搭配 `React.lazy` 使用，使用方法如下：
+使用方法如下：
 
 `Loadable(params)`
 
