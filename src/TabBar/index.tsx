@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, MemoExoticComponent } from 'react';
 import styled, { ThemeProvider } from 'styled-components/macro';
 import Tab, { ITabProps } from './Tab';
 import { pxToRem, generateKy, defaultConfig } from '../util';
@@ -12,6 +12,10 @@ interface ITarBarProps extends React.PropsWithChildren<any> {
     unselectedTintColor?: string;
     height?: string;
   };
+}
+
+interface ITabBarComponent extends MemoExoticComponent<(props: ITarBarProps) => JSX.Element> {
+  Item?: MemoExoticComponent<(props: ITabProps) => JSX.Element>;
 }
 
 const initTheme = {
@@ -55,8 +59,8 @@ const TabBar = memo(({
       </Wrapper>
     </ThemeProvider>
   );
-});
+}) as ITabBarComponent;
 
-(TabBar as any).Item = Tab;
+TabBar.Item = Tab;
 
 export default TabBar;
