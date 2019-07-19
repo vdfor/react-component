@@ -52,7 +52,7 @@ ReactDOM.render(<Spin />, mountNode);
 + [TabBar](./src/TabBar)
 + [Skeleton](./src/Skeleton)
 
-### hooks
+### Hooks
 
 + [useDelay](./src/useDelay)
 + [useTitle](./src/useTitle)
