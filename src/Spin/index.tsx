@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { memo } from 'react';
 import styled, { keyframes, ThemeProvider } from 'styled-components/macro';
 import { defaultConfig } from '../util';
 
@@ -65,7 +65,7 @@ const initTheme = {
   color: defaultConfig.primaryColor
 };
 
-export default ({ style = {}, theme = {} }: ISpinProps) => (
+export default memo(({ style = {}, theme = {} }: ISpinProps) => (
   <ThemeProvider theme={{ ...initTheme, ...theme }}>
     <Wrapper style={style}>
       <div>
@@ -76,4 +76,4 @@ export default ({ style = {}, theme = {} }: ISpinProps) => (
       </div>
     </Wrapper>
   </ThemeProvider>
-);
+));
