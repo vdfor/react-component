@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { memo } from 'react';
 import styled, { ThemeProvider } from 'styled-components/macro';
 import Tab, { ITabProps } from './Tab';
 import { pxToRem, generateKy, defaultConfig } from '../util';
@@ -31,7 +31,7 @@ const Wrapper = styled.div`
   color: ${({ theme: { unselectedTintColor } }) => unselectedTintColor};
 `;
 
-const Bar = ({
+const TabBar = memo(({
   className, style = {}, theme = {}, children
 }: ITarBarProps) => {
   const themeProps = { ...initTheme, ...theme };
@@ -55,13 +55,8 @@ const Bar = ({
       </Wrapper>
     </ThemeProvider>
   );
-};
+});
 
-export default class TarBar extends React.PureComponent<ITarBarProps> {
-  public static Item = Tab;
+(TabBar as any).Item = Tab;
 
-  public render() {
-    const { props } = this;
-    return <Bar {...props} />;
-  }
-}
+export default TabBar;

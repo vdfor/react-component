@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { memo } from 'react';
 import styled from 'styled-components/macro';
 import { pxToRem } from '../util';
 
@@ -32,11 +32,11 @@ const Icon = styled.div`
   height: ${pxToRem(22)};
 `;
 
-export default ({
+export default memo(({
   selected = false, icon, selectedIcon, title, tintColor, unselectedTintColor, onPress
 }: ITabProps) => (
   <Wrapper style={{ color: selected ? tintColor : unselectedTintColor }} onClick={onPress}>
     <Icon style={{ backgroundImage: `url(${selected ? selectedIcon : icon})` }} />
     <Title>{title}</Title>
   </Wrapper>
-);
+));
