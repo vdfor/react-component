@@ -14,4 +14,4 @@ module.exports = {
     require.resolve('@babel/plugin-proposal-class-properties'),
     require.resolve('@babel/plugin-proposal-object-rest-spread')
   ]
-}
+};

@@ -8,4 +8,3 @@ const { getRelativePath } = require('./utils');
   await fs.copySync(getRelativePath('../dist/types'), getRelativePath('../dist/lib'));
   await fs.removeSync(getRelativePath('../dist/types'));
 })();
-  
