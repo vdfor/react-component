@@ -15,7 +15,7 @@ interface ITarBarProps extends React.PropsWithChildren<any> {
 }
 
 interface ITabBarComponent extends MemoExoticComponent<(props: ITarBarProps) => JSX.Element> {
-  Item?: MemoExoticComponent<(props: ITabProps) => JSX.Element>;
+  Item: MemoExoticComponent<(props: ITabProps) => JSX.Element>;
 }
 
 const initTheme = {
