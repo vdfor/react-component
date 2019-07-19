@@ -17,3 +17,4 @@ export { default as Loadable } from './Loadable';
 export { default as useTitle } from './useTitle';
 export { default as useDalay } from './useDelay';
 export { default as TabBar } from './TabBar';
+export { default as Skeleton } from './Skeleton';
