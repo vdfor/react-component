@@ -41,9 +41,7 @@ ReactDOM.render(<Spin />, mountNode);
 
 ## Docs
 
-### CHANGELOG
-
-+ [CHANGELOG](./CHANGELOG.md)
+[CHANGELOG](./CHANGELOG.md)
 
 ### Components
 
@@ -56,7 +54,3 @@ ReactDOM.render(<Spin />, mountNode);
 
 + [useDelay](./src/useDelay)
 + [useTitle](./src/useTitle)
-
-## 授权协议
-
-[MIT](./License)
