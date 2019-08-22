@@ -3,22 +3,27 @@
 遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范。
 
 ---
+## v0.7.2
+
+`2019-08-23`
+
++ **fix** 修复 useDelay 导出名错误
 
 ## v0.7.2
 
-`2019-07-19`
+`2019-08-22`
 
 + **fix** 修复 Curtain 组件 会话框宽高计算错误
 
 ## v0.7.1
 
-`2019-07-19`
+`2019-08-22`
 
 + **fix** 修复未导出 Curtain 组件的bug
 
 ## v0.7.0
 
-`2019-07-19`
+`2019-08-22`
 
 + **feature** Components - `Curtain`
 
