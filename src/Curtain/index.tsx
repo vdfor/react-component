@@ -59,9 +59,9 @@ const CurtainView = styled.div`
 `;
 
 const ContentView = styled.div`
-  width: ${pxToRem(530)};
+  width: ${pxToRem(265)};
   min-height: 50px;
-  max-height: ${pxToRem(900)};
+  max-height: ${pxToRem(450)};
   overflow-y: auto;
   border-radius: 6px;
   background: #fff;
