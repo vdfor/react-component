@@ -18,3 +18,4 @@ export { default as useTitle } from './useTitle';
 export { default as useDalay } from './useDelay';
 export { default as TabBar } from './TabBar';
 export { default as Skeleton } from './Skeleton';
+export { default as Curtain } from './Curtain';
