@@ -22,9 +22,6 @@
     "start": "node scripts/beforeStart.js && yarn run typing && cross-env NODE_ENV=development rollup -c --watch",
     "build": "yarn run test && node scripts/beforeStart.js && cross-env NODE_ENV=production rollup -c && yarn run typing",
     "typing": "tsc --allowJs false --declaration --declarationDir dist/types --isolatedModules false --noEmit false --emitDeclarationOnly && node scripts/afterTyping.js",
-    "postversion:major": "yarn run build && cross-env POST_VERSION=major node scripts/postversion.js",
-    "postversion:minor": "yarn run build && cross-env POST_VERSION=minor node scripts/postversion.js",
-    "postversion:patch": "yarn run build && cross-env POST_VERSION=patch node scripts/postversion.js",
     "test": "jest --color"
   },
   "peerDependencies": {
