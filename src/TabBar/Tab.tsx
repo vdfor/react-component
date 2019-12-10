@@ -33,7 +33,7 @@ const Icon = styled.div`
 `;
 
 export default memo(({
-  selected = false, icon, selectedIcon, title, tintColor, unselectedTintColor, onPress
+  selected = false, icon, selectedIcon, title, tintColor, unselectedTintColor, onPress,
 }: ITabProps) => (
   <Wrapper style={{ color: selected ? tintColor : unselectedTintColor }} onClick={onPress}>
     <Icon style={{ backgroundImage: `url(${selected ? selectedIcon : icon})` }} />

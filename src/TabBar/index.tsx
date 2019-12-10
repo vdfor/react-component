@@ -22,7 +22,7 @@ const initTheme = {
   height: pxToRem(50),
   barTintColor: '#ffffff',
   tintColor: defaultConfig.primaryColor,
-  unselectedTintColor: '#888888'
+  unselectedTintColor: '#888888',
 };
 
 const Wrapper = styled.div`
@@ -36,15 +36,15 @@ const Wrapper = styled.div`
 `;
 
 const TabBar = memo(({
-  className, style = {}, theme = {}, children
+  className, style = {}, theme = {}, children,
 }: ITarBarProps) => {
   const themeProps = { ...initTheme, ...theme };
   const { tintColor, unselectedTintColor } = themeProps;
   const getTabs = () => React.Children.map(children, ({ props: rProps }: any) => ({
-    ...(rProps as ITabProps)
+    ...(rProps as ITabProps),
   }));
   const tabs = getTabs();
-  const content = Array.isArray(tabs) ? tabs.map(cProps => (
+  const content = Array.isArray(tabs) ? tabs.map((cProps) => (
     <Tab
       {...cProps}
       key={generateKy()}

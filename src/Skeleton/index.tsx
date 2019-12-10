@@ -53,7 +53,7 @@ const ParagraphLiView = styled.li`
 `;
 
 export default memo(({
-  title = true, rows = 3, loading = true, children
+  title = true, rows = 3, loading = true, children,
 }: IProps) => {
   const rowsArr = [...Array(rows)];
   const rowsLen = rowsArr.length;
@@ -71,7 +71,8 @@ export default memo(({
                     .map((i, index) => (
                     // eslint-disable-next-line
                     <ParagraphLiView key={index} style={{ width: index === rowsLen - 1 ? '60%' : '100%' }} />
-                    ))}
+                    ))
+                }
               </ParagraphUlView>
             )}
           </ContentView>

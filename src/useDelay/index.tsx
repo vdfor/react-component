@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export default (delay: number = 200) => {
+export default (delay = 200) => {
   const [loaded, setLoaded] = React.useState(false);
   React.useEffect(() => {
     let timer: any = null;

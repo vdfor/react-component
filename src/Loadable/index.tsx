@@ -1,5 +1,5 @@
 import React, {
-  ReactElement, Suspense, lazy, ComponentType
+  ReactElement, Suspense, lazy, ComponentType,
 } from 'react';
 import Spin from '../Spin';
 import useDelay from '../useDelay';
@@ -23,7 +23,7 @@ export default ({
   component,
   props: iprops = {},
   loading = <Spin style={{ height: '100vh' }} />,
-  delay = 200
+  delay = 200,
 }: IParams) => (props: any) => {
   const LazyComponent = lazy(component);
   return (

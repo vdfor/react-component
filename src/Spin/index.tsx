@@ -62,7 +62,7 @@ const LineFour = styled(Line)`
 `;
 
 const initTheme = {
-  color: defaultConfig.primaryColor
+  color: defaultConfig.primaryColor,
 };
 
 export default memo(({ style = {}, theme = {} }: ISpinProps) => (

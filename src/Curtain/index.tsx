@@ -1,5 +1,5 @@
 import React, {
-  memo, PropsWithChildren, useState, useEffect
+  memo, PropsWithChildren, useState, useEffect,
 } from 'react';
 import { createPortal } from 'react-dom';
 import styled, { keyframes } from 'styled-components/macro';
@@ -108,7 +108,7 @@ const MaskView = styled.div`
 const Portal = memo(({ children, visible }: PropsWithChildren<{ visible: boolean }>) => (visible ? createPortal(children, document.body) : null));
 
 export default memo(({
-  visible, children, maskClosable = true, onClose
+  visible, children, maskClosable = true, onClose,
 }: PropsWithChildren<IProps>) => {
   const [cut, setCut] = useState('');
 
