@@ -1,13 +1,8 @@
-import React, { memo, PropsWithChildren, useContext } from 'react';
+import React, { memo, useContext } from 'react';
 import styled, { keyframes, css } from 'styled-components/macro';
 import { ConfigContent } from '../ConfigProvider';
 import { pxToRem, pxTransform } from '../util';
-
-interface IProps extends PropsWithChildren<any> {
-  rows?: number;
-  title?: boolean;
-  loading?: boolean;
-}
+import { ISkeletonProps } from './type';
 
 const skeletonLoading = keyframes`
   0% {
@@ -55,7 +50,7 @@ const ParagraphLiView = styled.li`
 
 export default memo(({
   title = true, rows = 3, loading = true, children,
-}: IProps) => {
+}: ISkeletonProps) => {
   // @ts-ignore
   const rowsArr = [...Array(rows)].map((i, index) => index);
   const rowsLen = rowsArr.length;
