@@ -28,10 +28,12 @@
     "test": "jest --color"
   },
   "peerDependencies": {
-    "@babel/runtime": ">= 7",
     "react": ">= 16.8.0",
     "react-dom": ">= 16.8.0",
     "styled-components": ">= 4"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.7.6"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
@@ -43,7 +45,6 @@
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.3.3",
-    "@babel/runtime": "^7.4.5",
     "@types/enzyme": "^3.9.3",
     "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/jest": "^24.0.13",
