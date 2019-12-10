@@ -6,11 +6,12 @@ import { eslint } from 'rollup-plugin-eslint';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 
 const appDirectory = path.join(fs.realpathSync(process.cwd()), './');
-const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
+const resolveApp = (relativePath) => path.resolve(appDirectory, relativePath);
 
 const extensions = ['.js', '.jsx', '.ts', '.tsx'];
-const moduleNames = fs.readdirSync(resolveApp('src')).filter(i => !/(index.ts|.d.ts|util.ts|setupTests.ts)$/.test(i));
-const moduleMap = moduleNames.reduce((prev, name) => {
+const moduleNames = fs.readdirSync(resolveApp('src')).filter((i) => !/(index.ts|.d.ts|util.ts|setupTests.ts)$/.test(i));
+const moduleMap = moduleNames.reduce((initPrev, name) => {
+  const prev = initPrev;
   try {
     const stat = fs.statSync(resolveApp(`src/${name}/index.ts`));
     prev[name] = stat && stat.isFile() ? resolveApp(`src/${name}/index.ts`) : resolveApp(`src/${name}/index.tsx`);
@@ -24,45 +25,45 @@ const nodeEnv = process.env.NODE_ENV || 'development';
 const commonOutputOpts = {
   entryFileNames: '[name]/index.js',
   sourcemap: nodeEnv === 'development',
-  exports: 'named'
+  exports: 'named',
 };
 
 export default {
   input: {
     index: resolveApp('src/index.ts'),
-    ...moduleMap
+    ...moduleMap,
   },
   output: [
     {
       dir: resolveApp('dist/es'),
       format: 'esm',
-      ...commonOutputOpts
+      ...commonOutputOpts,
     },
     {
       dir: resolveApp('dist/lib'),
       format: 'commonjs',
-      ...commonOutputOpts
-    }
+      ...commonOutputOpts,
+    },
   ],
   // external: id => externals.some(e => id.indexOf(e) === 0),
   plugins: [
     peerDepsExternal({
-      includeDependencies: true
+      includeDependencies: true,
     }),
     eslint({
-      fix: true
+      fix: true,
     }),
     resolve({
       extensions,
       customResolveOptions: {
         moduleDirectory: [resolveApp('src')],
-      }
+      },
     }),
     babel({
       exclude: /node_modules/,
       runtimeHelpers: true,
       extensions,
-      babelrc: true
-    })
+      babelrc: false, // use babel.config.js
+    }),
   ],
-}
+};
