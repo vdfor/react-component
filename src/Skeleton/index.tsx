@@ -1,6 +1,7 @@
-import React, { memo, PropsWithChildren } from 'react';
+import React, { memo, PropsWithChildren, useContext } from 'react';
 import styled, { keyframes, css } from 'styled-components/macro';
-import { pxToRem } from '../util';
+import { ConfigContent } from '../ConfigProvider';
+import { pxToRem, pxTransform } from '../util';
 
 interface IProps extends PropsWithChildren<any> {
   rows?: number;
@@ -28,8 +29,8 @@ const ContentView = styled.div`
 `;
 
 const ContentChildrenBaseStyle = css`
-  height: ${pxToRem(16)};
-  margin: ${pxToRem(16)} 0 0;
+  height: ${({ base }: {base: number}) => pxTransform(16, base)};
+  margin: ${({ base }: {base: number}) => pxTransform(16, base)} 0 0;
   padding: 0;
   background: linear-gradient(90deg, #f2f2f2 25%, #e6e6e6 37%, #f2f2f2 63%);
   background-size: 400% 100%;
@@ -55,24 +56,22 @@ const ParagraphLiView = styled.li`
 export default memo(({
   title = true, rows = 3, loading = true, children,
 }: IProps) => {
-  const rowsArr = [...Array(rows)];
+  // @ts-ignore
+  const rowsArr = [...Array(rows)].map((i, index) => index);
   const rowsLen = rowsArr.length;
+  const { baseFontSize } = useContext(ConfigContent);
+  const fontSizeProps = { base: baseFontSize };
   return (
     <>
       {loading ? (
         <WrapperView>
           <ContentView>
-            {title && <TitleView />}
+            {title && <TitleView {...fontSizeProps} />}
             {rows > 0 && (
               <ParagraphUlView>
-                {
-                  rowsArr
-                  // @ts-ignore
-                    .map((i, index) => (
-                    // eslint-disable-next-line
-                    <ParagraphLiView key={index} style={{ width: index === rowsLen - 1 ? '60%' : '100%' }} />
-                    ))
-                }
+                {rowsArr.map((index) => (
+                  <ParagraphLiView {...fontSizeProps} key={index} style={{ width: index === rowsLen - 1 ? '60%' : '100%' }} />
+                ))}
               </ParagraphUlView>
             )}
           </ContentView>

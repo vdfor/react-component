@@ -19,3 +19,4 @@ export { default as useDelay } from './useDelay';
 export { default as TabBar } from './TabBar';
 export { default as Skeleton } from './Skeleton';
 export { default as Curtain } from './Curtain';
+export { default as ConfigProvider } from './ConfigProvider';
