@@ -3,6 +3,17 @@
 遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范。
 
 ---
+
+## v0.8.0
+
+`2019-12-11`
+
++ **feature** Components - `ConfigProvider`
++ **feature** Components - `SkeletonList`
++ **break** 更改 Spin/TabBar api [详细](https://github.com/vdfor/react-component/issues/5)
++ **feature** Skeleton 新增 avatar api - 是否显示头像
++ **docs** 文档迁移
+
 ## v0.7.4
 
 `2019-11-13`

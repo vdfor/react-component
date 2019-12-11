@@ -1,63 +1,68 @@
-import React, { memo, MemoExoticComponent } from 'react';
-import styled, { ThemeProvider } from 'styled-components/macro';
+import React, { memo, MemoExoticComponent, useContext } from 'react';
+import styled from 'styled-components/macro';
 import Tab, { ITabProps } from './Tab';
-import { pxToRem, generateKy, defaultConfig } from '../util';
+import { ConfigContent } from '../ConfigProvider';
+import { pxTransform } from '../util';
 
-interface ITarBarProps extends React.PropsWithChildren<any> {
+interface ITarBarBasicProps {
+  barTintColor: string;
+  tintColor: string;
+  unselectedTintColor: string;
+  height: string;
+}
+
+interface ITarBarProps extends Partial<ITarBarBasicProps>, React.PropsWithChildren<any> {
   style?: React.CSSProperties;
   className?: string;
-  theme?: {
-    barTintColor?: string;
-    tintColor?: string;
-    unselectedTintColor?: string;
-    height?: string;
-  };
 }
 
 interface ITabBarComponent extends MemoExoticComponent<(props: ITarBarProps) => JSX.Element> {
   Item: MemoExoticComponent<(props: ITabProps) => JSX.Element>;
 }
 
-const initTheme = {
-  height: pxToRem(50),
-  barTintColor: '#ffffff',
-  tintColor: defaultConfig.primaryColor,
-  unselectedTintColor: '#888888',
-};
-
 const Wrapper = styled.div`
   width: 100%;
-  height: ${({ theme: { height } }) => height};
-  background-color: ${({ theme: { barTintColor } }) => barTintColor};
+  height: ${({ height }: ITarBarBasicProps) => height};
+  background-color: ${({ barTintColor }: ITarBarBasicProps) => barTintColor};
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${({ theme: { unselectedTintColor } }) => unselectedTintColor};
+  color: ${({ unselectedTintColor }: ITarBarBasicProps) => unselectedTintColor};
+  border-top: 1px solid #ddd;
 `;
 
 const TabBar = memo(({
-  className, style = {}, theme = {}, children,
+  className, style = {}, barTintColor = '#ffffff', tintColor, unselectedTintColor = '#888888', height, children,
 }: ITarBarProps) => {
-  const themeProps = { ...initTheme, ...theme };
-  const { tintColor, unselectedTintColor } = themeProps;
-  const getTabs = () => React.Children.map(children, ({ props: rProps }: any) => ({
-    ...(rProps as ITabProps),
-  }));
+  const { baseFontSize, primaryColor } = useContext(ConfigContent);
+  const basicProps = {
+    tintColor: tintColor || primaryColor,
+    unselectedTintColor,
+  };
+  const tabProps = {
+    ...basicProps,
+    baseFontSize,
+  };
+  const wrapperProps = {
+    ...basicProps,
+    height: height || pxTransform(50, baseFontSize),
+    barTintColor,
+  };
+  const getTabs = () => React.Children.map(children, ({ props: rProps, key }) => ({
+    ...rProps,
+    key,
+  } as ITabProps));
   const tabs = getTabs();
   const content = Array.isArray(tabs) ? tabs.map((cProps) => (
     <Tab
       {...cProps}
-      key={generateKy()}
-      tintColor={tintColor}
-      unselectedTintColor={unselectedTintColor}
+      {...tabProps}
     />
   )) : null;
   return (
-    <ThemeProvider theme={themeProps}>
-      <Wrapper className={className} style={style}>
-        {content}
-      </Wrapper>
-    </ThemeProvider>
+    <Wrapper {...wrapperProps} className={className} style={style}>
+      {content}
+    </Wrapper>
   );
 }) as ITabBarComponent;
 

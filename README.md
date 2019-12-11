@@ -9,15 +9,9 @@
 
 **当前版本为非稳定版本，1.0.0版本发布之前，可能会存在弃用或破坏性更新。**
 
-简体中文 | [English](./README.en.md)
-
 **[1.0 Roadmap](https://github.com/vdfor/react-component/issues/1)**
 
-## 特性
-
-+ 使用 Typescript 构建，提供完整的类型定义
-+ 支持按需加载，优化前端性能
-+ css in js by [styled-components](https://github.com/styled-components/styled-components)
+**v0.8.0存在破坏性更新，具体请查看 [v0.8.0 Roadmap](https://github.com/vdfor/react-component/issues/5)**
 
 ## 安装
 
@@ -29,29 +23,5 @@ yarn add @vdfor/react-component styled-components
 npm i @vdfor/react-component styled-components -S
 ```
 
-## 使用
+[文档](https://www.yuque.com/docs/share/88e95cf2-dcf4-48f1-a4cb-96d01ee53bff)
 
-```tsx
-import { Spin } from '@vdfor/react-component';
-
-ReactDOM.render(<Spin />, mountNode);
-```
-
-[按需加载](./docs/use-babel-plugin-import.md)
-
-## Docs
-
-[CHANGELOG](./CHANGELOG.md)
-
-### Components
-
-+ [Spin](./src/Spin)
-+ [Loadable](./src/Loadable)
-+ [TabBar](./src/TabBar)
-+ [Skeleton](./src/Skeleton)
-+ [Curtain](./src/Curtain)
-
-### Hooks
-
-+ [useDelay](./src/useDelay)
-+ [useTitle](./src/useTitle)

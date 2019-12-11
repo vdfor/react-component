@@ -1,9 +1,10 @@
 import React, {
-  memo, PropsWithChildren, useState, useEffect,
+  memo, PropsWithChildren, useState, useEffect, useContext,
 } from 'react';
 import { createPortal } from 'react-dom';
 import styled, { keyframes } from 'styled-components/macro';
-import { pxToRem } from '../util';
+import { ConfigContent } from '../ConfigProvider';
+import { pxTransform } from '../util';
 
 interface IProps {
   visible: boolean;
@@ -59,9 +60,9 @@ const CurtainView = styled.div`
 `;
 
 const ContentView = styled.div`
-  width: ${pxToRem(265)};
+  width: ${({ base }: {base: number}) => pxTransform(265, base)};;
   min-height: 50px;
-  max-height: ${pxToRem(450)};
+  max-height: ${({ base }: {base: number}) => pxTransform(450, base)};;
   overflow-y: auto;
   border-radius: 6px;
   background: #fff;
@@ -111,6 +112,8 @@ export default memo(({
   visible, children, maskClosable = true, onClose,
 }: PropsWithChildren<IProps>) => {
   const [cut, setCut] = useState('');
+  const { baseFontSize } = useContext(ConfigContent);
+  const baseProps = { base: baseFontSize };
 
   const selfOnClose = () => {
     if (onClose) {
@@ -141,7 +144,7 @@ export default memo(({
     <Portal visible={visible}>
       <WrapperView>
         <CurtainView cut={cut}>
-          <ContentView>{children}</ContentView>
+          <ContentView {...baseProps}>{children}</ContentView>
           <CloseView onClick={selfOnClose} />
         </CurtainView>
         <MaskView onClick={onMaskClick} />

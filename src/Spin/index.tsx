@@ -1,12 +1,16 @@
-import React, { memo } from 'react';
-import styled, { keyframes, ThemeProvider } from 'styled-components/macro';
-import { defaultConfig } from '../util';
+import React, { memo, useContext } from 'react';
+import styled, { keyframes } from 'styled-components/macro';
+import { ConfigContent } from '../ConfigProvider';
+import { pxTransform } from '../util';
 
 interface ISpinProps {
   style?: React.CSSProperties;
-  theme?: {
-    color?: string;
-  };
+  color?: string;
+}
+
+interface ILineProps {
+  bgColor: string;
+  base: number;
 }
 
 const spin = keyframes`
@@ -41,12 +45,12 @@ const Wrapper = styled.div`
 
 export const Line = styled.div`
   display: inline-block;
-  width: 8px;
-  height: 8px;
+  width: ${({ base }: ILineProps) => pxTransform(8, base)};
+  height: ${({ base }: ILineProps) => pxTransform(8, base)};
   border-radius: 50%;
-  margin-right: 2px;
+  margin-right: ${({ base }: ILineProps) => pxTransform(2, base)};
   animation: ${spin} 2s infinite;
-  background-color: ${({ theme: { color } }) => color};
+  background-color: ${({ bgColor }: ILineProps) => bgColor};
 `;
 
 const LineTwo = styled(Line)`
@@ -61,19 +65,20 @@ const LineFour = styled(Line)`
   animation-delay: .45s;
 `;
 
-const initTheme = {
-  color: defaultConfig.primaryColor,
-};
-
-export default memo(({ style = {}, theme = {} }: ISpinProps) => (
-  <ThemeProvider theme={{ ...initTheme, ...theme }}>
+export default memo(({ style = {}, color }: ISpinProps) => {
+  const { baseFontSize, primaryColor } = useContext(ConfigContent);
+  const lineProps = {
+    bgColor: color || primaryColor,
+    base: baseFontSize,
+  };
+  return (
     <Wrapper style={style}>
       <div>
-        <Line />
-        <LineTwo />
-        <LineThree />
-        <LineFour />
+        <Line {...lineProps} />
+        <LineTwo {...lineProps} />
+        <LineThree {...lineProps} />
+        <LineFour {...lineProps} />
       </div>
     </Wrapper>
-  </ThemeProvider>
-));
+  );
+});
