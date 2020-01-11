@@ -8,7 +8,7 @@ if (
 ) {
   console.warn(
     'You are using a whole package of @vdfor/react-component, please use https://www.npmjs.com/package/babel-plugin-import to reduce app bundle size.'
-    + 'Useage - https://www.yuque.com/docs/share/f64be408-4619-4264-a80e-71d24fe9152a',
+    + 'Useage - https://www.yuque.com/vdfor/gxwxzh/msl9yw',
   );
 }
 
