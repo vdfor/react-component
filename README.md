@@ -23,5 +23,5 @@ yarn add @vdfor/react-component styled-components
 npm i @vdfor/react-component styled-components -S
 ```
 
-[文档](https://www.yuque.com/docs/share/88e95cf2-dcf4-48f1-a4cb-96d01ee53bff)
+[文档](https://www.yuque.com/vdfor/gxwxzh/msl9yw)
 
